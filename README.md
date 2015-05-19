@@ -14,4 +14,4 @@ The delay in seconds before responding.
 
 ### status
 
-The status code of the response.
+The HTTP status code of the response.
