@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io"
 	"net/http"
 	"time"
@@ -20,7 +21,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	port := flag.String("port", "8000", "The server port.")
+	port := flag.Int("port", 8000, "The server port.")
 
 	flag.IntVar(&delay, "delay", 0, "Response delay.")
 	flag.IntVar(&statusCode, "status", 200, "Response status code.")
@@ -28,7 +29,7 @@ func main() {
 	flag.Parse()
 
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":"+*port, nil)
+	http.ListenAndServe(fmt.Sprintf(": %v", *port), nil)
 }
 
 
